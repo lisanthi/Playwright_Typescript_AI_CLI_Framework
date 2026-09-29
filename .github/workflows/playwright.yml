@@ -58,16 +58,15 @@ jobs:
       - name: ⚙️ Create .env File
         run: Copy-Item .env.example .env
 
-      
       - name: 🧪 Run Playwright Tests
         run: |
           $suite = "${{ github.event.inputs.test_suite || 'test:e2e' }}"
           $browser = "${{ github.event.inputs.browser || 'chromium' }}"
           $mode = "${{ github.event.inputs.mode || 'headless' }}"
           $tag = $suite -replace 'test:', ''
+          if ($tag -eq 'e2e') { $tag = 'end-to-end' }
           $browserFlag = "--project=$browser"
           $modeFlag = if ($mode -eq 'headed') { '--headed' } else { '' }
-          echo "@$tag"
           npx playwright test --grep "@$tag" $browserFlag $modeFlag --reporter=dot --output=test-results
         env:
           CI: "1"
