@@ -33,9 +33,7 @@ export class CartPage {
 
   /** Reads the applicable cart total. */
   async getTotal(): Promise<string> {
-    const totalRow = this.page.locator('table tr').filter({
-      has: this.page.getByText('Total', { exact: true }),
-    }).last();
+    const totalRow = this.page.locator('table').last().locator('tr').filter({ hasText: 'Total:' }).last();
     return (await totalRow.textContent())?.trim() ?? '';
   }
 }

@@ -13,7 +13,12 @@ export class ProductPage {
 
   /** Verifies the product detail page heading. */
   async isProductDisplayed(productName: string): Promise<boolean> {
-    return this.page.getByRole('heading', { name: productName, level: 1 }).isVisible();
+    try {
+      await this.page.getByRole('heading', { name: productName, level: 1 }).waitFor({ state: 'visible' });
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   /** Sets the requested product quantity. */

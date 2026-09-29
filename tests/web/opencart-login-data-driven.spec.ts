@@ -13,7 +13,7 @@ const dataPath = path.resolve(__dirname, '../../testdata/opencart_logindata.json
 const loginRows = DataProvider.readJson(dataPath) as LoginRow[];
 
 loginRows.forEach((row, index) => {
-  test(`Data-driven login ${index + 1}: ${row.testName} @master @datadriven`, async ({ homePage }) => {
+  test(`Data-driven login ${index + 1}: ${row.testName} @master  @web @datadriven`, async ({ homePage }) => {
     const loginPage = await homePage.clickLogin();
     const accountPage = await loginPage.login(row.email, row.password);
 

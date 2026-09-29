@@ -13,9 +13,10 @@ export class HomePage {
 
   constructor(page: Page) {
     this.page = page;
-    this.myAccountMenu = page.getByRole('button', { name: 'My Account' });
+    //this.myAccountMenu = page.getByRole('button', { name: 'My Account' }); //use this for local url
+    this.myAccountMenu = page.getByRole('link', { name: /My Account/ }).first(); //This is for the live URL
     this.searchBox = page.getByRole('textbox', { name: 'Search' });
-    this.shoppingCartLink = page.getByRole('link', { name: 'Shopping Cart', exact: true }).last();
+    this.shoppingCartLink = page.getByRole('link', { name: /Shopping Cart/ }).first();
   }
 
   /** Opens the My Account menu. */

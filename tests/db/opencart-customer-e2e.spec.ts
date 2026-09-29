@@ -14,7 +14,7 @@ type CustomerRow = {
   date_added?: string;
 };
 
-test('Register customer and verify Admin and MySQL data @master @db @end-to-end', async ({
+test('Register customer and verify Admin and MySQL data @master @db @ete', async ({
   homePage,
   adminLoginPage,
   page,

@@ -6,7 +6,7 @@ const PRODUCT_NAME = process.env.PRODUCT_NAME ?? 'MacBook';
 const PRODUCT_QUANTITY = Number(process.env.PRODUCT_QUANTITY ?? 1);
 const EXPECTED_PRICE = process.env.TOTAL_PRICE ?? '$602.00';
 
-test('User registration flow @master @sanity', async ({ homePage }) => {
+test('User registration flow @master @web @sanity', async ({ homePage }) => {
   const password = RandomDataUtil.getPassword(12);
   const registrationData = {
     firstName: RandomDataUtil.getFirstName(),
@@ -23,7 +23,7 @@ test('User registration flow @master @sanity', async ({ homePage }) => {
   await accountPage.isMyAccountPageExists(); 
 });
 
-test('Valid login flow @master @sanity', async ({ homePage }) => {
+test('Valid login flow @master @web @sanity', async ({ homePage }) => {
   const loginPage = await homePage.clickLogin();
   const { email, password } = Helper.getLoginDetails();
   await expect(loginPage.isLoginPageExists()).resolves.toBeTruthy();
@@ -31,13 +31,13 @@ test('Valid login flow @master @sanity', async ({ homePage }) => {
   await accountPage.isMyAccountPageExists(); 
   });
 
-test('Invalid login flow @master @regression', async ({ homePage }) => {
+test('Invalid login flow @master @web @regression', async ({ homePage }) => {
   const loginPage = await homePage.clickLogin();
   const accountPage = await loginPage.login('invalid@example.com', 'invalid-password');
   await expect(loginPage.hasInvalidLoginWarning()).resolves.toBeTruthy();
    });
 
-test('Logout flow @master @sanity', async ({ homePage, page }) => {
+test('Logout flow @master @web @sanity', async ({ homePage, page }) => {
   const loginPage = await homePage.clickLogin();
   const { email, password } = Helper.getLoginDetails();
   const accountPage = await loginPage.login(email, password);
@@ -46,16 +46,16 @@ test('Logout flow @master @sanity', async ({ homePage, page }) => {
   await expect(logoutPage.isLogoutPageExists()).resolves.toBeTruthy();
   await logoutPage.continueToHome();
   await expect(page.getByRole('button', { name: /item\(s\)/ })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'My Account' })).toBeVisible();
+  await expect(page.getByRole('link', { name: /My Account/ }).first()).toBeVisible();
 });
 
-test('Product search flow @master @sanity', async ({ homePage, page }) => {
+test('Product search flow @master @web @sanity', async ({ homePage, page }) => {
   await homePage.search(PRODUCT_NAME);
   await expect(page.getByRole('heading', { name: `Search - ${PRODUCT_NAME}` })).toBeVisible();
   await expect(page.getByRole('heading', { level: 4 }).getByRole('link', { name: PRODUCT_NAME, exact: true }).first()).toBeVisible();
 });
 
-test('Add product to cart @master @sanity', async ({ homePage, cartPage }) => {
+test('Add product to cart @master @web @sanity', async ({ homePage, cartPage }) => {
   await homePage.search(PRODUCT_NAME);
   const productPage = await homePage.openProduct(PRODUCT_NAME);
   await expect(productPage.isProductDisplayed(PRODUCT_NAME)).resolves.toBeTruthy();
@@ -68,7 +68,7 @@ test('Add product to cart @master @sanity', async ({ homePage, cartPage }) => {
   await expect(cartPage.getQuantity()).resolves.toBe(String(PRODUCT_QUANTITY));
 });
 
-test('End-to-end shopping flow @master @end-to-end', async ({ homePage, cartPage }) => {
+test('End-to-end shopping flow @master @web @end-to-end', async ({ homePage, cartPage }) => {
   const password = RandomDataUtil.getPassword(12);
   const registerPage = await homePage.clickRegister();
   const registrationData = {
