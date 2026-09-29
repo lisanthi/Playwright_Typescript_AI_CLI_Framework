@@ -1,0 +1,81 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "Mock Product 1",
+      "price": 10.99,
+      "description": "A great local mock product",
+      "category": "electronics",
+      "image": "https://fakestoreapi.com",
+      "rating": {
+        "rate": 3.9,
+        "count": 120
+      }
+    },
+    {
+      "title": "Intelligent Marble Chips",
+      "price": 481.25,
+      "description": "Stylish Car designed to make you stand out with prudent looks",
+      "image": "https://picsum.photos/seed/SSgy6yct/661/610",
+      "category": "electronics",
+      "id": "VdDyUAOWimE"
+    }
+  ],
+  "carts": [
+    {
+      "id": "1",
+      "userId": 1,
+      "date": "2020-03-02T00:00:02.000Z",
+      "products": [
+        {
+          "productId": 1,
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "userId": 1,
+      "date": "2026-09-23",
+      "products": [
+        {
+          "productId": 222,
+          "quantity": 804
+        }
+      ],
+      "id": "idEdOG3WAY8"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "email": "john@gmail.com",
+      "username": "johnd",
+      "name": {
+        "firstname": "john",
+        "lastname": "doe"
+      }
+    },
+    {
+      "email": "Arden19@yahoo.com",
+      "username": "Clayton_Nikolaus",
+      "password": "7Rh5LCwt8_",
+      "name": {
+        "firstname": "Lelia",
+        "lastname": "Herman"
+      },
+      "address": {
+        "city": "Huntsville",
+        "street": "Louis Green",
+        "number": 720,
+        "zipcode": "27286",
+        "geolocation": {
+          "lat": "-68.8709",
+          "long": "-164.0413"
+        }
+      },
+      "phone": "286.872.8034 x87045",
+      "id": "bbVDxJjHEZI"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

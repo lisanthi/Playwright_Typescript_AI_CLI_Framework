@@ -1,0 +1,19 @@
+Please paste down all the info in the below images for the context.md file without modifying anything.
+
+Please paste down all the info in the below images without modifying anything for the context.md file 
+<FollowUp>
+Please share the **remaining screenshots** containing sections 8 and onwards so I can continue documenting the rules and architecture for your `context.md` file.
+
+
+</FollowUp>
+
+
+I have added some more screenshots. Please continue paste down all the info in the images without modifying anything for the context.md file 
+When a new page object is created it MUST be added here (type... base.extend) so web tests can consume it in the future.
+Please provide the next screenshots to capture section 11 and beyond for your context.md file.
+
+Do not mix Web, API, and DB implementation unnecessarily.When an end-to-end scenario requires multiple layers, clearly define the interaction between them (e.g., generate customer data once, use it to drive the UI step, then validate the same data via API and/or DB steps) without breaking the framework architecture — keep each layer's logic in its own test.step() and avoid leaking Page Object/browser logic into the DB layer or vice versa.Are there any more sections or screenshots following Section 19 (such as reporting or closing rules) to complete your context.md file?
+
+Use this file as the single source of truth for AI-assisted Playwright TypeScript test generation, reusable across any Web, API, DB, or combined automation project. Supply it together with a project-specific test prompt file to drive actual test generation.
+Do not add unrelated technologies, frameworks, libraries, files, or architectural patterns unless they are already present in the project or explicitly required.
+Do not hallucinate missing implementation details. When information is unavailable, clearly identify what needs to be provided or verified rather than guessing.
