@@ -58,10 +58,7 @@ jobs:
       - name: ⚙️ Create .env File
         run: Copy-Item .env.example .env
 
-      - name: List test files
-        run: ls
-             npx playwright test --list
-
+      
       - name: 🧪 Run Playwright Tests
         run: |
           $suite = "${{ github.event.inputs.test_suite || 'test:e2e' }}"
@@ -70,7 +67,8 @@ jobs:
           $tag = $suite -replace 'test:', ''
           $browserFlag = "--project=$browser"
           $modeFlag = if ($mode -eq 'headed') { '--headed' } else { '' }
-          npx playwright test --grep "@$tag" $browserFlag $modeFlag --reporter=dot --output=test-results
+          npx playwright test --grep "$tag" $browserFlag $modeFlag --reporter=dot --output=test-results
+          //npx playwright test --grep "@$tag" $browserFlag $modeFlag --reporter=dot --output=test-results
         env:
           CI: "1"
 
