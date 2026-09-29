@@ -59,8 +59,8 @@ jobs:
         run: Copy-Item .env.example .env
 
       - name: List test files
-        run: ls -la
-            npx playwright test --list
+        run: ls
+             npx playwright test --list
 
       - name: 🧪 Run Playwright Tests
         run: |
